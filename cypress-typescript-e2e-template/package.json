@@ -1,0 +1,17 @@
+{
+  "name": "cypress-typescript-e2e",
+  "version": "1.0.0",
+  "description": "TypeScript + Cypress E2E testing template",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test": "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "^13.6.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
