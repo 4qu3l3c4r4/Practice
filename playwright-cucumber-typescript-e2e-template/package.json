@@ -1,0 +1,19 @@
+{
+  "name": "playwright-cucumber-typescript-e2e-template",
+  "version": "1.0.0",
+  "description": "E2E test template using Playwright + Cucumber + TypeScript",
+  "scripts": {
+    "test": "cucumber-js",
+    "test:headed": "HEADLESS_MODE=false cucumber-js",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.49.0",
+    "@cucumber/cucumber": "^11.1.0",
+    "@types/node": "^20.0.0",
+    "dotenv": "^16.0.0",
+    "typescript": "^5.0.0",
+    "chalk": "^4.1.2"
+  }
+}
