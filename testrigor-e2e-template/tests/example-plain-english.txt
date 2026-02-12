@@ -1,0 +1,26 @@
+Test: Application loads successfully
+- Open URL "BASE_URL"
+- Check that page has loaded
+- Verify page title contains "Example"
+
+Test: User can login with valid credentials  
+- Open URL "BASE_URL"
+- Enter "user@example.com" in the field that looks like "email" or "username"
+- Enter "password123" in the password field
+- Click the button that looks like "Log in" or "Sign in"
+- Check that we are no longer on the login page
+- Verify dashboard is displayed
+
+Test: Navigation menu is accessible
+- Open URL "BASE_URL" 
+- Login with valid credentials
+- Click on "Menu" or navigation icon
+- Verify menu options are displayed
+- Click on "Settings" option
+- Check that settings page loads
+
+Test: Form validation works correctly
+- Open URL "BASE_URL"
+- Click the button that looks like "Log in" without entering credentials
+- Check that validation message appears
+- Verify message says "Please enter your email"

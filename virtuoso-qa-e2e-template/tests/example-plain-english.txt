@@ -1,0 +1,30 @@
+Test: Verify application loads successfully
+- Navigate to the application homepage
+- Wait for the page to fully load
+- Verify the page title contains "Example"
+- Check that the main content area is visible
+
+Test: User login with valid credentials
+- Go to the login page
+- Enter "user@example.com" in the email field
+- Enter "password123" in the password field  
+- Click the login button
+- Wait for navigation to complete
+- Verify the user is redirected to the dashboard
+- Check that the user menu is displayed
+
+Test: Navigation menu functionality
+- Login with valid credentials
+- Click on the main navigation menu
+- Verify all menu items are displayed
+- Click on "Settings" menu item
+- Confirm the settings page loads
+- Verify the page URL contains "settings"
+
+Test: Form validation behavior
+- Navigate to the login page
+- Click the login button without entering credentials
+- Verify error message appears for email field
+- Verify error message appears for password field
+- Enter invalid email format
+- Check that email validation message is shown
