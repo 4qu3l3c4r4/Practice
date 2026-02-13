@@ -20,4 +20,8 @@ public class Config {
     public static boolean isHeadless() {
         return Boolean.parseBoolean(dotenv.get("HEADLESS", "true"));
     }
+
+    public static boolean isVideoRecordingEnabled() {
+        return Boolean.parseBoolean(dotenv.get("VIDEO_RECORDING", "false"));
+    }
 }

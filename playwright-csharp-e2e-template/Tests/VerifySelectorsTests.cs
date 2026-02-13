@@ -1,11 +1,10 @@
-using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
 
 namespace Tests;
 
 [TestFixture]
 [Category("SelectorVerification")]
-public class VerifySelectorsTests : PageTest
+public class VerifySelectorsTests : BaseTest
 {
     [Test]
     public async Task VerifyLoginSelectors()

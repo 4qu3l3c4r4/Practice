@@ -1,4 +1,3 @@
-using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
 using Pages;
 
@@ -6,7 +5,7 @@ namespace Tests;
 
 [TestFixture]
 [Category("Smoke")]
-public class SmokeTests : PageTest
+public class SmokeTests : BaseTest
 {
     private LoginPage _loginPage = null!;
 

@@ -8,7 +8,7 @@ export default defineConfig({
     baseUrl: process.env.BASE_URL || 'https://example.com',
     supportFile: 'cypress/support/e2e.ts',
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
-    video: false,
+    video: process.env.VIDEO_RECORDING === 'true',
     screenshotOnRunFailure: true,
     viewportWidth: 1280,
     viewportHeight: 720,

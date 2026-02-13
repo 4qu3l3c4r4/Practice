@@ -4,9 +4,13 @@ import { getLoginUrl } from './utils/urls';
 
 dotenv.config();
 
+const REAL_CHROME_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+
 async function globalSetup(config: FullConfig) {
   const browser = await chromium.launch();
-  const page = await browser.newPage();
+  const page = await browser.newPage({
+    userAgent: REAL_CHROME_UA,
+  });
 
   try {
     await page.goto(getLoginUrl());
@@ -26,6 +30,8 @@ async function globalSetup(config: FullConfig) {
     await page.context().storageState({ path: 'tests/storage-state.json' });
   } catch (error) {
     console.error('Global setup failed:', error);
+    await page.screenshot({ path: 'screenshots/global-setup-failure.png' });
+    throw error;
   } finally {
     await browser.close();
   }

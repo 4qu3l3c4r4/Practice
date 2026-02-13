@@ -22,6 +22,27 @@ public class AppiumFixture
     [TearDown]
     public void TearDown()
     {
+        if (TestContext.CurrentContext.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed && Driver != null)
+        {
+            TakeScreenshot(TestContext.CurrentContext.Test.Name);
+        }
         Driver?.Quit();
+    }
+
+    private void TakeScreenshot(string testName)
+    {
+        try
+        {
+            var screenshot = Driver?.GetScreenshot();
+            if (screenshot != null)
+            {
+                Directory.CreateDirectory("screenshots");
+                screenshot.SaveAsFile($"screenshots/{testName}.png");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to take screenshot: {ex.Message}");
+        }
     }
 }

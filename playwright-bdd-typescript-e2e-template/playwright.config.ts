@@ -7,6 +7,11 @@ config({ path: './.env' });
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 const HEADLESS_MODE = process.env.HEADLESS_MODE !== 'false';
 const TEST_ISOLATION = process.env.TEST_ISOLATION !== 'false';
+const VIDEO_RECORDING = process.env.VIDEO_RECORDING === 'true';
+
+// Real Chrome user agent in headless to avoid 403 from WAF/bot detection
+const REAL_CHROME_UA =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
 const testDir = defineBddConfig({
   paths: ['tests/features/**/*.feature'],
@@ -32,9 +37,11 @@ export default defineConfig({
     baseURL: BASE_URL,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
+    video: VIDEO_RECORDING ? 'on' : 'off',
     ignoreHTTPSErrors: true,
     actionTimeout: 15000,
     navigationTimeout: 30000,
+    ...(HEADLESS_MODE && { userAgent: REAL_CHROME_UA }),
     storageState: TEST_ISOLATION ? 'tests/storage-state.json' : undefined,
   },
 
@@ -49,10 +56,21 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], headless: HEADLESS_MODE },
     },
     {
+      name: 'login',
+      testMatch: /.*\.feature/,
+      grep: /@login/,
+      use: {
+        ...devices['Desktop Chrome'],
+        headless: HEADLESS_MODE,
+        storageState: undefined, // no pre-auth so login page is visible
+      },
+    },
+    {
       name: 'all',
       testMatch: /.*\.feature/,
       use: { ...devices['Desktop Chrome'], headless: HEADLESS_MODE },
     },
+    // Uncomment for multi-browser:
     // {
     //   name: 'firefox',
     //   testMatch: /.*\.feature/,
