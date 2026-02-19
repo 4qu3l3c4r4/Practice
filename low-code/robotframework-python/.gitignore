@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Logs
+logs/
+*.log
+log.html
+output.xml
+
+# Reports
+reports/
+screenshots/
+report.html
+
+# Environment
+.env
+.env.local
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Downloads
+downloads/

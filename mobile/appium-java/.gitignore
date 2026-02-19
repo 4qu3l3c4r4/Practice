@@ -1,0 +1,27 @@
+# Java/Maven
+target/
+*.class
+*.jar
+*.war
+
+# Logs
+logs/
+*.log
+
+# Reports
+reports/
+screenshots/
+
+# Environment
+.env
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.iml
+*.swp

@@ -1,0 +1,12 @@
+{
+  "name": "playwright-visual-regression-template",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:update": "npx playwright test --update-snapshots"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "dotenv": "^16.3.0"
+  }
+}

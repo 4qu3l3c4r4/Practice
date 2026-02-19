@@ -1,0 +1,56 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+logs/
+*.log
+
+# Playwright artifacts
+test-results/
+playwright-report/
+playwright/.cache/
+trace-*.zip
+
+# Auth state
+tests/storage-state.json
+
+# Reports
+reports/
+screenshots/
+
+# Videos
+*.mp4
+*.avi
+*.mov
+*.webm
+videos/
+
+# Build
+dist/
+build/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Downloads (test artifacts)
+downloads/
+
+# Cucumber generated files
+.features-gen/

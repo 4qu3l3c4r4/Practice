@@ -1,0 +1,13 @@
+{
+  "name": "postman-newman-api-template",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "newman run collections/smoke.postman_collection.json -e collections/env.postman_environment.json",
+    "test:html": "newman run collections/smoke.postman_collection.json -e collections/env.postman_environment.json -r htmlextra --reporter-htmlextra-export reports/report.html",
+    "test:ci": "newman run collections/smoke.postman_collection.json -e collections/env.postman_environment.json --env-var baseUrl=$BASE_URL -r cli,junit --reporter-junit-export reports/results.xml"
+  },
+  "devDependencies": {
+    "newman": "^6.1.0",
+    "newman-reporter-htmlextra": "^1.23.0"
+  }
+}

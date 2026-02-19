@@ -1,0 +1,80 @@
+# Azure DevOps — E2E test pipelines for all template types
+# Copy the relevant stage(s) into your azure-pipelines.yml
+
+trigger:
+  branches:
+    include: [main, develop]
+
+variables:
+  - group: e2e-secrets  # contains BASE_URL, UI_USERNAME, UI_PASSWORD
+
+stages:
+  # --- Node.js (Playwright / Cypress / Supertest / Newman) ---
+  - stage: E2E_Node
+    jobs:
+      - job: test
+        pool:
+          vmImage: ubuntu-latest
+        timeoutInMinutes: 30
+        steps:
+          - task: NodeTool@0
+            inputs: { versionSpec: '20.x' }
+          - script: npm ci
+          - script: npx playwright install --with-deps chromium  # Playwright only
+          - script: npm test
+          - task: PublishTestResults@2
+            condition: always()
+            inputs:
+              testResultsFormat: JUnit
+              testResultsFiles: 'reports/*.xml'
+          - publish: reports/
+            artifact: test-results
+            condition: always()
+
+  # --- Python (Selenium / pytest / Robot Framework) ---
+  - stage: E2E_Python
+    jobs:
+      - job: test
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: UsePythonVersion@0
+            inputs: { versionSpec: '3.12' }
+          - script: pip install -r requirements.txt
+          - script: pytest --junitxml=reports/results.xml
+          - task: PublishTestResults@2
+            condition: always()
+            inputs:
+              testResultsFormat: JUnit
+              testResultsFiles: 'reports/results.xml'
+
+  # --- Java (Selenium / REST Assured / Karate) ---
+  - stage: E2E_Java
+    jobs:
+      - job: test
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: Maven@4
+            inputs:
+              mavenPomFile: pom.xml
+              goals: test
+              publishJUnitResults: true
+              testResultsFiles: 'target/surefire-reports/*.xml'
+
+  # --- .NET (Playwright C# / Selenium C#) ---
+  - stage: E2E_DotNet
+    jobs:
+      - job: test
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: UseDotNet@2
+            inputs: { packageType: sdk, version: 8.0.x }
+          - script: dotnet restore
+          - script: dotnet test --logger "trx;LogFileName=results.trx"
+          - task: PublishTestResults@2
+            condition: always()
+            inputs:
+              testResultsFormat: VSTest
+              testResultsFiles: 'TestResults/*.trx'

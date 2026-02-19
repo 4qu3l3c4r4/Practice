@@ -1,0 +1,42 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+
+# Logs
+logs/
+*.log
+
+# Playwright artifacts
+test-results/
+playwright-report/
+
+# Auth state
+storage-state.json
+
+# Reports
+reports/
+screenshots/
+
+# Videos
+*.mp4
+*.avi
+*.mov
+*.webm
+
+# Environment
+.env
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Downloads
+downloads/

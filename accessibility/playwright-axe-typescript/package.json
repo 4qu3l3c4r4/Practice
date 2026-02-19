@@ -1,0 +1,14 @@
+{
+  "name": "playwright-axe-a11y-template",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:wcag-a": "npx playwright test --grep wcag-a",
+    "test:wcag-aa": "npx playwright test --grep wcag-aa"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "@axe-core/playwright": "^4.8.0",
+    "dotenv": "^16.3.0"
+  }
+}

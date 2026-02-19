@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/api/check",
+    "bodyPatterns": [
+      { "matchesJsonPath": "$.accountId" },
+      { "matchesJsonPath": "$.name" }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "result": "MATCH",
+      "status": "ACTIVE",
+      "accountType": "ORG"
+    }
+  }
+}

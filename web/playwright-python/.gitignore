@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+venv/
+.venv/
+
+# Logs
+logs/
+*.log
+
+# Playwright artifacts
+test-results/
+playwright-report/
+
+# Auth state
+tests/storage-state.json
+
+# Reports
+reports/
+screenshots/
+
+# Videos
+*.mp4
+*.avi
+*.mov
+*.webm
+videos/
+
+# Environment
+.env
+.env.local
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Downloads
+downloads/
+
+# pytest
+.pytest_cache/
+htmlcov/
+.coverage

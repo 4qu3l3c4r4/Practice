@@ -1,0 +1,11 @@
+{
+  "name": "artillery-load-template",
+  "version": "1.0.0",
+  "scripts": {
+    "test:load": "artillery run load-test.yml",
+    "test:load:report": "artillery run --output report.json load-test.yml && artillery report report.json"
+  },
+  "devDependencies": {
+    "artillery": "^2.0.0"
+  }
+}

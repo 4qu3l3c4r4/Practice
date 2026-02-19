@@ -1,0 +1,26 @@
+# Katalon
+bin/
+Libs/
+Plugins/
+*.prj
+
+# Logs
+logs/
+*.log
+
+# Reports
+Reports/
+screenshots/
+
+# Environment
+.env
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp

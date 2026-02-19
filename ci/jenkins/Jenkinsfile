@@ -1,0 +1,75 @@
+// Jenkins — E2E test pipelines for all template types
+// Copy the relevant stage(s) into your Jenkinsfile
+
+pipeline {
+    agent any
+    
+    environment {
+        BASE_URL     = credentials('e2e-base-url')
+        UI_USERNAME  = credentials('e2e-username')
+        UI_PASSWORD  = credentials('e2e-password')
+    }
+
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        timestamps()
+    }
+
+    stages {
+        // --- Node.js (Playwright / Cypress / Supertest / Newman) ---
+        stage('E2E - Node.js') {
+            tools { nodejs 'node-20' }
+            steps {
+                sh 'npm ci'
+                sh 'npx playwright install --with-deps chromium'  // Playwright only
+                sh 'npm test'
+            }
+            post {
+                always {
+                    junit 'reports/*.xml'
+                    archiveArtifacts artifacts: 'reports/**, screenshots/**', allowEmptyArchive: true
+                }
+            }
+        }
+
+        // --- Python (Selenium / pytest / Robot Framework) ---
+        // stage('E2E - Python') {
+        //     steps {
+        //         sh 'pip install -r requirements.txt'
+        //         sh 'pytest --junitxml=reports/results.xml'
+        //     }
+        //     post {
+        //         always { junit 'reports/results.xml' }
+        //     }
+        // }
+
+        // --- Java (Selenium / REST Assured / Karate) ---
+        // stage('E2E - Java') {
+        //     tools { maven 'maven-3.9' }
+        //     steps {
+        //         sh 'mvn test -B'
+        //     }
+        //     post {
+        //         always { junit 'target/surefire-reports/*.xml' }
+        //     }
+        // }
+
+        // --- .NET (Playwright C# / Selenium C#) ---
+        // stage('E2E - .NET') {
+        //     steps {
+        //         sh 'dotnet restore'
+        //         sh 'dotnet test --logger "trx;LogFileName=results.trx"'
+        //     }
+        //     post {
+        //         always { mstest testResultsFile: 'TestResults/*.trx' }
+        //     }
+        // }
+    }
+
+    post {
+        failure {
+            // Notify on failure (Slack, email, etc.)
+            echo 'E2E tests failed!'
+        }
+    }
+}

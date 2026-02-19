@@ -1,0 +1,75 @@
+# GitLab CI — E2E test pipelines for all template types
+# Copy the relevant job(s) into your .gitlab-ci.yml
+
+stages:
+  - test
+
+variables:
+  BASE_URL: ${BASE_URL}
+  UI_USERNAME: ${UI_USERNAME}
+  UI_PASSWORD: ${UI_PASSWORD}
+
+# --- Node.js (Playwright / Cypress / Supertest / Newman) ---
+e2e:node:
+  stage: test
+  image: mcr.microsoft.com/playwright:v1.41.0-jammy  # or node:20 for non-Playwright
+  script:
+    - npm ci
+    - npx playwright install --with-deps chromium  # Playwright only
+    - npm test
+  artifacts:
+    when: always
+    paths:
+      - reports/
+      - screenshots/
+    expire_in: 14 days
+  timeout: 30m
+
+# --- Python (Selenium / pytest-requests / Robot Framework) ---
+e2e:python:
+  stage: test
+  image: python:3.12
+  before_script:
+    - pip install -r requirements.txt
+  script:
+    - pytest --junitxml=reports/results.xml
+  artifacts:
+    when: always
+    paths: [reports/, screenshots/]
+    reports:
+      junit: reports/results.xml
+    expire_in: 14 days
+
+# --- Java (Selenium / REST Assured / Karate) ---
+e2e:java:
+  stage: test
+  image: maven:3.9-eclipse-temurin-17
+  script:
+    - mvn test -B
+  artifacts:
+    when: always
+    paths: [target/surefire-reports/]
+    reports:
+      junit: target/surefire-reports/*.xml
+    expire_in: 14 days
+
+# --- .NET (Playwright C# / Selenium C#) ---
+e2e:dotnet:
+  stage: test
+  image: mcr.microsoft.com/dotnet/sdk:8.0
+  script:
+    - dotnet restore
+    - dotnet test --logger "trx;LogFileName=results.trx"
+  artifacts:
+    when: always
+    paths: [TestResults/]
+    expire_in: 14 days
+
+# --- Load test (manual trigger) ---
+load-test:
+  stage: test
+  image: grafana/k6:latest
+  script:
+    - k6 run -e BASE_URL=${BASE_URL} load-test.js
+  when: manual
+  allow_failure: true

@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  wiremock:
+    image: wiremock/wiremock:3.4.2
+    ports:
+      - "${WIREMOCK_PORT:-8080}:8080"
+    volumes:
+      - ./mappings:/home/wiremock/mappings
+      - ./__files:/home/wiremock/__files
+    command: >
+      --verbose=${VERBOSE:-false}
+      --global-response-templating

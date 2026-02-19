@@ -1,0 +1,42 @@
+# GitHub Actions — Playwright / Cypress / WebdriverIO / TestCafe / Supertest / Newman (Node.js)
+name: E2E Tests (Node.js)
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+  schedule:
+    - cron: '0 6 * * 1-5'  # weekdays 6am UTC
+
+env:
+  BASE_URL: ${{ secrets.BASE_URL }}
+  UI_USERNAME: ${{ secrets.UI_USERNAME }}
+  UI_PASSWORD: ${{ secrets.UI_PASSWORD }}
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # Playwright only — install browsers
+      - run: npx playwright install --with-deps chromium
+        if: hashFiles('playwright.config.*') != ''
+
+      - run: npm test
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: |
+            reports/
+            screenshots/
+            test-results/
+          retention-days: 14
