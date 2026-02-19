@@ -2,9 +2,9 @@
   "name": "testcafe-typescript-e2e-template",
   "version": "1.0.0",
   "scripts": {
-    "test": "testcafe chrome tests/ --headless",
-    "test:smoke": "testcafe chrome tests/smoke.ts --headless",
-    "test:headed": "testcafe chrome tests/"
+    "test": "testcafe chrome tests/ --headless --quarantine-mode",
+    "test:smoke": "testcafe chrome tests/smoke.test.ts --headless --quarantine-mode",
+    "test:headed": "testcafe chrome tests/ --quarantine-mode"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

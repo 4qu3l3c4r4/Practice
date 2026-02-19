@@ -4,6 +4,7 @@ namespace AppiumE2E.Tests;
 
 [TestFixture]
 [Category("Smoke")]
+[Retry(2)]
 public class SmokeTests : AppiumFixture
 {
     [Test]

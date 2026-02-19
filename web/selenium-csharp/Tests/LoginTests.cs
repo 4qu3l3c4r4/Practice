@@ -5,6 +5,7 @@ namespace Tests;
 
 [TestFixture]
 [Category("Smoke")]
+[Retry(2)]
 public class LoginTests : WebDriverFixture
 {
     private LoginPage _loginPage = null!;

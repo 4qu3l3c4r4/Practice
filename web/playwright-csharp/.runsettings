@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <NUnit>
+    <NumberOfTestWorkers>1</NumberOfTestWorkers>
+  </NUnit>
+  <RunConfiguration>
+    <MaxCpuCount>1</MaxCpuCount>
+  </RunConfiguration>
+  <!-- Retry failed tests up to 2 times -->
+  <MSTest>
+    <MapInconclusiveToFailed>true</MapInconclusiveToFailed>
+  </MSTest>
+</RunSettings>

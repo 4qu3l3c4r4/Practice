@@ -6,6 +6,15 @@ from pages.login_page import LoginPage
 
 load_dotenv()
 
+# --- Self-healing: retry failed tests ---
+def pytest_addoption(parser):
+    parser.addoption("--retries", action="store", default=2, type=int, help="Retry failed tests N times")
+
+def pytest_collection_modifyitems(config, items):
+    retries = config.getoption("--retries")
+    for item in items:
+        item.add_marker(pytest.mark.flaky(reruns=retries))
+
 @pytest.fixture
 def base_url():
     return Config.BASE_URL

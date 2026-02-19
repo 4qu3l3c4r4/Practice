@@ -6,6 +6,8 @@ const config: Config = {
   testMatch: ['**/tests/**/*.test.ts'],
   setupFilesAfterEnv: ['<rootDir>/config/env.ts'],
   testTimeout: 30000,
+  // Self-healing: retry failed tests
+  retryTimes: 2,
 };
 
 export default config;

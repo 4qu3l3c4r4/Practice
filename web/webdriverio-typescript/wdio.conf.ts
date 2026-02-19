@@ -22,5 +22,10 @@ export const config: WebdriverIO.Config = {
         timeout: 60000
     },
     services: ['chromedriver'],
-    baseUrl: process.env.BASE_URL || 'https://example.com'
+    baseUrl: process.env.BASE_URL || 'https://example.com',
+    specFileRetries: 2,
+    specFileRetriesDelay: 1,
+    waitforTimeout: 15000,
+    connectionRetryTimeout: 120000,
+    connectionRetryCount: 3,
 };

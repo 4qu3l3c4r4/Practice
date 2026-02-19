@@ -153,8 +153,11 @@ See [`IMPLEMENTATION_GUIDE.md`](IMPLEMENTATION_GUIDE.md) for the complete step-b
 
 ## Handling flaky tests
 
-- Use retries in CI (Playwright: `retries: 2`; Cypress: `retries: { runMode: 2 }`)
-- Tag known flaky tests: `@flaky`, `test.fixme()`, `pytest.mark.xfail`
-- Investigate root causes — usually timing issues or shared state
+All templates include **self-healing** capabilities. See [`SELF_HEALING_GUIDE.md`](SELF_HEALING_GUIDE.md) for full details.
+
+- **Retries** — every template has automatic test retries configured (2x for most, quarantine mode for TestCafe)
+- **Fallback selectors** — `ResilientLocator` / `SmartLocator` / `SmartFind` utilities try multiple selector strategies: `data-test-id` → `role` → `text` → CSS/XPath
+- **Stale element protection** — Selenium and Appium templates include retry wrappers that handle `StaleElementReferenceException`
+- **Low-code platforms** (mabl, testRigor, Virtuoso) have built-in AI self-healing
 # e2e-templates
 # e2e-templates
