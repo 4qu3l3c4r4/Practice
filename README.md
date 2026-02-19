@@ -156,3 +156,4 @@ See [`IMPLEMENTATION_GUIDE.md`](IMPLEMENTATION_GUIDE.md) for the complete step-b
 - Use retries in CI (Playwright: `retries: 2`; Cypress: `retries: { runMode: 2 }`)
 - Tag known flaky tests: `@flaky`, `test.fixme()`, `pytest.mark.xfail`
 - Investigate root causes — usually timing issues or shared state
+# e2e-templates
