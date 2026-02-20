@@ -96,3 +96,16 @@ Always prefer selectors in this order:
 | Appium Python | 2 | ✅ smart_find | ✅ smart_find | ✅ retry wrapper |
 | Appium C# | 2 | ✅ SmartFind | ✅ SmartFind | ✅ retry wrapper |
 | Robot Framework | 3x | ✅ Wait Until | ✅ Resilient Locator | ✅ keyword retry |
+| React Native Detox | 2 | ✅ native | ✅ resilientElement | ✅ native |
+| GraphQL Testing | 2 | ✅ resilientRequest | ✅ retry wrapper | ✅ retry wrapper |
+| gRPC Testing | 2 | ✅ resilientGrpcCall | ✅ retry wrapper | ✅ retry wrapper |
+| Electron Playwright | 2 | ✅ native | ✅ resilientLocator | ✅ native |
+| Salesforce LWC | 2 | ✅ native | ✅ salesforceResilientLocator | ✅ native |
+| SAP Fiori | 2 | ✅ native | ✅ sapResilientLocator | ✅ native |
+| ServiceNow | 2 | ✅ native | ✅ serviceNowResilientLocator | ✅ native |
+| React Testing Library | 2 | ✅ waitFor | ✅ resilientQuery | ✅ native |
+| Vue Testing Library | 2 | ✅ waitFor | ✅ resilientQuery | ✅ native |
+| Database Testing | 2 | ✅ resilientQuery | ✅ waitForTable | ✅ retry wrapper |
+| OWASP ZAP | 2 | ✅ resilientZapRequest | ✅ waitForScanComplete | ✅ retry wrapper |
+| Chaos Testing | 2 | ✅ native | ✅ retry wrapper | ✅ native |
+| Hardhat Web3 | 2 | ✅ native | ✅ native | ✅ native |

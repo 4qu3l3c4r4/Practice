@@ -12,7 +12,10 @@
     "test:smoke": "cross-env HEADLESS_MODE=true npx playwright test --project=smoke",
     "test:smoke:headed": "cross-env HEADLESS_MODE=false npx playwright test --project=smoke",
     "test:all": "cross-env HEADLESS_MODE=true npx playwright test --project=all",
-    "report": "npx playwright show-report reports/html"
+    "report": "npx playwright show-report reports/html",
+    "report:pdf": "node scripts/generate-pdf-report.js",
+    "report:stakeholder": "node scripts/generate-stakeholder-report.js",
+    "report:all": "npm run report:pdf && npm run report:stakeholder"
   },
   "dependencies": {
     "@playwright/test": "^1.49.0",

@@ -12,18 +12,33 @@ Reusable test templates organized by category. Copy the one you need, set `.env`
 | Web + Java shop | `web/` | `selenium-java` |
 | Web + Python shop | `web/` | `selenium-python` |
 | Mobile (Android & iOS) | `mobile/` | `appium-java`, `appium-csharp`, or `appium-python` |
+| Mobile (Flutter) | `mobile/` | `flutter-integration-test` |
+| Mobile (React Native) | `mobile/` | `react-native-detox` |
 | API / REST testing | `api/` | `supertest-typescript`, `rest-assured-java`, `pytest-requests-python`, or `postman-newman` |
+| API / GraphQL testing | `api/` | `graphql-testing` |
+| API / gRPC testing | `api/` | `grpc-testing` |
 | Visual regression | `visual/` | `playwright-visual-regression-typescript` |
 | Accessibility (WCAG) | `accessibility/` | `playwright-axe-typescript` |
 | Load / performance | `performance/` | `k6-javascript` or `artillery-yaml` |
 | Contract testing | `contract/` | `pact-typescript` |
 | Mock API / test data | `mock/` | `wiremock-docker` |
 | Database seeding | `data/` | `test-data-seeder-typescript` |
+| Database validation | `data/` | `database-testing` |
 | Cloud device farm | `cloud/` | `browserstack` |
 | CI/CD pipelines | `ci/` | GitHub Actions, GitLab CI, Azure DevOps, Jenkins |
 | No-code / AI team | `low-code/` | `testrigor`, `mabl`, or `virtuoso-qa` |
 | Keyword-driven / non-dev QA | `low-code/` | `robotframework-python` or `katalon-groovy` |
+| OutSystems apps | `low-code/` | `outsystems-web` |
+| Salesforce apps | `low-code/` | `salesforce-lwc` |
+| SAP Fiori apps | `low-code/` | `sap-fiori` |
+| ServiceNow apps | `low-code/` | `servicenow` |
+| Component testing (React) | `component/` | `react-testing-library` |
+| Component testing (Vue) | `component/` | `vue-testing-library` |
 | Component testing | `web/` | `cypress-typescript` |
+| Desktop apps (Electron) | `desktop/` | `electron-playwright` |
+| Security testing (OWASP) | `security/` | `owasp-zap` |
+| Chaos engineering | `reliability/` | `chaos-testing` |
+| Web3 / Smart contracts | `web3/` | `hardhat-testing` |
 
 ## Directory structure
 
@@ -45,13 +60,17 @@ Reusable test templates organized by category. Copy the one you need, set `.env`
 ├── mobile/                       # Android & iOS testing
 │   ├── appium-java/
 │   ├── appium-python/
-│   └── appium-csharp/
+│   ├── appium-csharp/
+│   ├── flutter-integration-test/
+│   └── react-native-detox/
 │
 ├── api/                          # REST / HTTP API testing
 │   ├── supertest-typescript/
 │   ├── rest-assured-java/
 │   ├── pytest-requests-python/
-│   └── postman-newman/
+│   ├── postman-newman/
+│   ├── graphql-testing/
+│   └── grpc-testing/
 │
 ├── visual/                       # Screenshot comparison
 │   └── playwright-visual-regression-typescript/
@@ -70,7 +89,8 @@ Reusable test templates organized by category. Copy the one you need, set `.env`
 │   └── wiremock-docker/
 │
 ├── data/                         # Test data management
-│   └── test-data-seeder-typescript/
+│   ├── test-data-seeder-typescript/
+│   └── database-testing/
 │
 ├── cloud/                        # Cloud execution (device farms)
 │   └── browserstack/
@@ -87,7 +107,27 @@ Reusable test templates organized by category. Copy the one you need, set `.env`
 │   ├── virtuoso-qa/
 │   ├── robotframework-python/
 │   ├── katalon-groovy/
-│   └── karate-java/
+│   ├── karate-java/
+│   ├── outsystems-web/
+│   ├── salesforce-lwc/
+│   ├── sap-fiori/
+│   └── servicenow/
+│
+├── component/                    # Component testing
+│   ├── react-testing-library/
+│   └── vue-testing-library/
+│
+├── desktop/                      # Desktop app testing
+│   └── electron-playwright/
+│
+├── security/                     # Security testing
+│   └── owasp-zap/
+│
+├── reliability/                  # Chaos engineering
+│   └── chaos-testing/
+│
+├── web3/                         # Blockchain / Smart contracts
+│   └── hardhat-testing/
 │
 └── scripts/                      # Shared utilities
 ```

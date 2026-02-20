@@ -1,0 +1,14 @@
+{
+  "name": "chaos-testing",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest",
+    "toxiproxy:start": "docker run -d -p 8474:8474 -p 20000:20000 --name toxiproxy ghcr.io/shopify/toxiproxy"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "jest": "^29.0.0",
+    "toxiproxy-node-client": "^2.0.6",
+    "typescript": "^5.0.0"
+  }
+}
