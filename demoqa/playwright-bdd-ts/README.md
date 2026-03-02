@@ -1,8 +1,8 @@
 # DemoQA — Playwright BDD TypeScript
 
-Automação E2E do **DemoQA** usando **Playwright + TypeScript + Playwright BDD (Gherkin)**.
+End-to-end automation for **DemoQA** using **Playwright + TypeScript + Playwright BDD (Gherkin)**.
 
-## Estrutura
+## Structure
 
 ```
 demoqa/playwright-bdd-ts/
@@ -35,30 +35,30 @@ npx playwright install
 npm run bddgen
 ```
 
-## Execução
+## Running tests
 
 ```bash
-npm run test        # todos os cenários
-npm run test:smoke  # cenários marcados com @smoke
+npm run test        # all scenarios
+npm run test:smoke  # scenarios tagged with @smoke
 ```
 
-## Escopo atual
+## Current scope
 
-- Formulário de prática (`/automation-practice-form`):
-  - Cenário positivo com dados válidos (modal de confirmação).
-  - Cenário negativo com campos obrigatórios vazios (classe `is-invalid`).
+- Practice Form (`/automation-practice-form`):
+  - Positive scenario with valid data (confirmation modal).
+  - Negative scenario with required fields empty (class `is-invalid`).
 
-## Módulos cobertos
+## Covered modules
 
-- **Forms**: Practice Form (positivo/negativo).
+- **Forms**: Practice Form (positive/negative).
 - **Elements**: Check Box, Radio Button, Select Menu.
-- **Files**: Upload e Download.
-- **Alerts**: Alert simples, Confirm (dismiss), Prompt.
+- **Files**: Upload and Download.
+- **Alerts**: Simple alert, Confirm (dismiss), Prompt.
 - **Interactions**: Drag and Drop (Droppable).
-- **Tables**: Web Tables (adicionar/remover; validação de email obrigatório).
-- **Frames**: leitura de conteúdo dentro do frame.
-- **Modals/Tooltips**: abrir/fechar modal; tooltip via hover.
-- **Widgets**: Date Picker (via input); Slider (via setas).
+- **Tables**: Web Tables (add/remove; required email validation).
+- **Frames**: read content inside the frame.
+- **Modals/Tooltips**: open/close modal; tooltip on hover.
+- **Widgets**: Date Picker (via input); Slider (via arrow keys).
 
-Tudo seguindo **POM**, dados externalizados (arquivo `src/fixtures/testData.json`), waits dinâmicos e tags (`@smoke`, `@regression`, `@negative`, `@edge`).
+Everything follows **POM**, externalized data (`src/fixtures/testData.json`), dynamic waits and tags (`@smoke`, `@regression`, `@negative`, `@edge`).
 

@@ -1,7 +1,7 @@
 {
   "name": "swag-labs-playwright-cucumber-ts",
   "version": "1.0.0",
-  "description": "Automação E2E do Swag Labs usando Playwright + Cucumber + TypeScript.",
+  "description": "End-to-end tests for Swag Labs using Playwright + Cucumber + TypeScript.",
   "scripts": {
     "test": "cucumber-js",
     "test:headed": "HEADLESS_MODE=false cucumber-js"

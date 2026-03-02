@@ -1,7 +1,7 @@
 {
   "name": "demoqa-playwright-bdd-ts",
   "version": "1.0.0",
-  "description": "Automação E2E do DemoQA usando Playwright + TypeScript + Playwright BDD (Gherkin).",
+  "description": "End-to-end tests for DemoQA using Playwright + TypeScript + Playwright BDD (Gherkin).",
   "scripts": {
     "format": "npx --yes prettier -w .",
     "typecheck": "tsc --noEmit",

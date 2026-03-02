@@ -1,8 +1,8 @@
 # Swag Labs — Playwright BDD TypeScript
 
-Automação E2E do site **Swag Labs (SauceDemo)** usando **Playwright + TypeScript + playwright-bdd (Gherkin)**.
+End-to-end automation for **Swag Labs (SauceDemo)** using **Playwright + TypeScript + playwright-bdd (Gherkin)**.
 
-## Estrutura do projeto
+## Project structure
 
 ```
 swag-labs/playwright-bdd-ts/
@@ -14,14 +14,14 @@ swag-labs/playwright-bdd-ts/
 └── src
     ├── pages/          # Page Objects (LoginPage, InventoryPage, etc.)
     ├── tests/
-    │   ├── features/   # Cenários BDD (.feature)
+    │   ├── features/   # BDD scenarios (.feature)
     │   └── steps/      # Step definitions
-    ├── fixtures/       # Fixtures do Playwright (injeção de POM, dados)
-    ├── helpers/        # Utilitários compartilhados (logger, waits, etc.)
-    └── elements/       # Selectors centralizados
+    ├── fixtures/       # Playwright fixtures (POM injection, data)
+    ├── helpers/        # Shared utilities (logger, waits, etc.)
+    └── elements/       # Centralized selectors
 ```
 
-## Pré-requisitos
+## Prerequisites
 
 - Node.js 20+
 - npm
@@ -30,55 +30,50 @@ swag-labs/playwright-bdd-ts/
 
 ```bash
 cd swag-labs/playwright-bdd-ts
-cp .env.example .env           # Ajuste BASE_URL e credenciais se necessário
+cp .env.example .env           # Configure BASE_URL and credentials if needed
 npm install
-npx playwright install         # Baixar navegadores na primeira vez
-npm run bddgen                 # Gerar bindings BDD a partir dos .feature
+npx playwright install         # Download browsers (first run)
+npm run bddgen                 # Generate BDD bindings from .feature files
 ```
 
-## Execução
+## Running tests
 
 ```bash
-npm run test                   # Todos os testes (headless)
-npm run test:headed            # Todos os testes com browser visível
-npm run test:smoke             # Cenários marcados com @smoke
-npm run test:smoke:headed      # @smoke com browser visível
-npm run test:all               # Projeto 'all' do Playwright
+npm run test                   # All tests (headless)
+npm run test:headed            # All tests with visible browser
+npm run test:smoke             # Tests tagged with @smoke
+npm run test:smoke:headed      # @smoke with visible browser
+npm run test:all               # Playwright project 'all'
 ```
 
-## Variáveis de ambiente
+## Environment variables
 
-Todas as variáveis ficam em `.env` (nunca hardcoded nos testes):
+All variables live in `.env` (never hardcoded in tests):
 
-- `BASE_URL` — URL base do Swag Labs (`https://www.saucedemo.com`)
-- `HEADLESS_MODE` — `true` ou `false`
-- `VIDEO_RECORDING` — `true` para gravar vídeo dos testes
-- `UI_USERNAME` — usuário principal (ex.: `standard_user`)
-- `UI_PASSWORD` — senha (`secret_sauce`)
-- `LOCKED_OUT_USERNAME` — usuário bloqueado (`locked_out_user`)
-- `PROBLEM_USERNAME` — usuário com problemas visuais (`problem_user`)
-- `PERFORMANCE_USERNAME` — usuário com performance degradada (`performance_glitch_user`)
+- `BASE_URL` — Swag Labs base URL (`https://www.saucedemo.com`)
+- `HEADLESS_MODE` — `true` or `false`
+- `VIDEO_RECORDING` — `true` to record videos
+- `UI_USERNAME` — main user (e.g. `standard_user`)
+- `UI_PASSWORD` — password (`secret_sauce`)
+- `LOCKED_OUT_USERNAME` — locked out user (`locked_out_user`)
+- `PROBLEM_USERNAME` — user with visual glitches (`problem_user`)
+- `PERFORMANCE_USERNAME` — user with performance issues (`performance_glitch_user`)
 
-## Convenções
+## Conventions
 
-- **POM (Page Object Model)**: uma classe por página (ex.: `LoginPage`, `InventoryPage`).
-- **BDD**: cenários em Gherkin com tags como `@login`, `@smoke`, `@regression`, `@negative`, `@edge`.
-- **Dados externos**: tudo que for variável vem de `.env` ou arquivos em `fixtures/`.
-- **Waits inteligentes**: uso de locators com `expect`, `waitForSelector` e waits dinâmicos, nunca `sleep` fixo.
+- **POM (Page Object Model)**: one class per page (e.g. `LoginPage`, `InventoryPage`).
+- **BDD**: Gherkin scenarios with tags like `@login`, `@smoke`, `@regression`, `@negative`, `@edge`.
+- **Externalized data**: everything variable comes from `.env` or files in `fixtures/`.
+- **Smart waits**: locators + `expect`, `waitForSelector`, dynamic waits; never fixed `sleep`.
 
-## Escopo atual
+## Current scope
 
-Neste primeiro passo foram implementados apenas os **cenários de autenticação**:
-
-- Login com credenciais válidas (`standard_user`).
-- Login com credenciais inválidas.
-- Login com usuário bloqueado (`locked_out_user`).
-- Cenário de borda com campos vazios.
-
-Os próximos passos esperados são:
-
-1. Cobrir fluxos críticos de negócio (ex.: adicionar ao carrinho, checkout).
-2. Adicionar cenários negativos e de borda adicionais.
-
-Os arquivos de teste e POM estão comentados em português para facilitar o entendimento.
+- Authentication scenarios:
+  - Login with valid credentials (`standard_user`).
+  - Login with invalid credentials.
+  - Login with locked out user (`locked_out_user`).
+  - Edge case with empty fields.
+- Business flows:
+  - Add item to cart and complete checkout with valid data.
+  - Negative checkout with missing first name (edge/negative).
 

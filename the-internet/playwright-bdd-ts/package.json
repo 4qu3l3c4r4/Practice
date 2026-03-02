@@ -1,7 +1,7 @@
 {
   "name": "the-internet-playwright-bdd-ts",
   "version": "1.0.0",
-  "description": "Automação E2E do The Internet (HerokuApp) usando Playwright + TypeScript + Playwright BDD (Gherkin).",
+  "description": "End-to-end tests for The Internet (HerokuApp) using Playwright + TypeScript + Playwright BDD (Gherkin).",
   "scripts": {
     "format": "npx --yes prettier -w .",
     "typecheck": "tsc --noEmit",
