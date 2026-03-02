@@ -138,6 +138,21 @@ Reusable test templates organized by category. Copy the one you need, set `.env`
 2. `cp .env.example .env` and configure
 3. Install and run (see each template's README)
 
+## Example demo projects
+
+This repository also includes ready-to-use demo automation projects that apply these templates to public sites:
+
+- **Swag Labs (SauceDemo)** — `swag-labs/`
+  - `playwright-bdd-ts`: login + cart + full checkout flows with BDD.
+  - `playwright-cs`: Playwright .NET login flows with NUnit.
+  - `playwright-cucumber-ts`: Playwright + Cucumber login scenarios.
+- **DemoQA** — `demoqa/`
+  - `playwright-bdd-ts`: forms, elements, alerts, drag-and-drop, upload/download, tables, frames, modals/tooltips, date picker, slider.
+- **The Internet (HerokuApp)** — `the-internet/`
+  - `playwright-bdd-ts`: basic auth, dynamic elements, drag-and-drop, upload, editor, hovers, JS alerts, infinite scroll, multiple windows.
+
+Use these as reference implementations or as starting points for your own test suites.
+
 ## AI-assisted implementation
 
 Every template includes an `AI_CONTEXT.md` file designed for LLMs (Kiro, Cursor, Copilot, Claude, ChatGPT, etc.). Point your AI assistant to it when starting implementation.
