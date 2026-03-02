@@ -1,0 +1,19 @@
+{
+  "name": "swag-labs-playwright-cucumber-ts",
+  "version": "1.0.0",
+  "description": "Automação E2E do Swag Labs usando Playwright + Cucumber + TypeScript.",
+  "scripts": {
+    "test": "cucumber-js",
+    "test:headed": "HEADLESS_MODE=false cucumber-js"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^11.0.0",
+    "@playwright/test": "^1.49.0",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
+

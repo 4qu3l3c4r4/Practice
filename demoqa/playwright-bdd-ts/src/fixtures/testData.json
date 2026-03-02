@@ -1,0 +1,21 @@
+{
+  "practiceForm": {
+    "valid": {
+      "firstName": "Joao",
+      "lastName": "Teste",
+      "email": "joao.teste@example.com",
+      "mobile": "11999999999"
+    }
+  },
+  "webTables": {
+    "valid": {
+      "firstName": "Maria",
+      "lastName": "QA",
+      "email": "maria.qa@example.com",
+      "age": "29",
+      "salary": "8000",
+      "department": "Quality"
+    }
+  }
+}
+
