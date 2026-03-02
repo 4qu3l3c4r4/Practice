@@ -5,50 +5,50 @@ import { test } from '../../fixtures/fixtures';
 const { Given, When, Then, And } = createBdd(test);
 
 Given(
-  'que estou na página de alerts JavaScript do The Internet',
+  'I am on The Internet JavaScript alerts page',
   async ({ javascriptAlertsPage }) => {
     await javascriptAlertsPage.open();
   },
 );
 
-When('eu aceito o alert simples', async ({ javascriptAlertsPage }) => {
+When('I accept the simple alert', async ({ javascriptAlertsPage }) => {
   await javascriptAlertsPage.triggerAlertAndAccept();
 });
 
-And('eu cancelo o confirm', async ({ javascriptAlertsPage }) => {
+And('I cancel the confirm', async ({ javascriptAlertsPage }) => {
   await javascriptAlertsPage.triggerConfirmAndDismiss();
 });
 
 And(
-  'eu preencho o prompt com {string}',
+  'I fill the prompt with {string}',
   async ({ javascriptAlertsPage }, value: string) => {
     await javascriptAlertsPage.triggerPromptAndAccept(value);
   },
 );
 
 Then(
-  'o resultado deve indicar as ações realizadas',
+  'the result should indicate the actions performed',
   async ({ javascriptAlertsPage }) => {
     await javascriptAlertsPage.expectResultContains('You entered:');
   },
 );
 
 Given(
-  'que estou na página de infinite scroll do The Internet',
+  'I am on The Internet infinite scroll page',
   async ({ infiniteScrollPage }) => {
     await infiniteScrollPage.open();
   },
 );
 
 When(
-  'eu rolo até carregar pelo menos {int} parágrafos',
+  'I scroll until at least {int} paragraphs are loaded',
   async ({ infiniteScrollPage }, count: number) => {
     await infiniteScrollPage.scrollUntilAtLeastNParagraphs(count);
   },
 );
 
 Then(
-  'a página deve conter pelo menos {int} parágrafos',
+  'the page should contain at least {int} paragraphs',
   async ({ infiniteScrollPage }, count: number) => {
     const actual = await infiniteScrollPage.getParagraphCount();
     expect(actual).toBeGreaterThanOrEqual(count);
@@ -56,20 +56,20 @@ Then(
 );
 
 Given(
-  'que estou na página de múltiplas janelas do The Internet',
+  'I am on The Internet multiple windows page',
   async ({ windowsPage }) => {
     await windowsPage.open();
   },
 );
 
-When('eu abro uma nova janela', async ({ windowsPage }) => {
+When('I open a new window', async ({ windowsPage }) => {
   await windowsPage.openNewWindowAndVerifyTitle();
 });
 
 Then(
-  'devo ver o texto {string} na nova janela',
+  'I should see the text {string} in the new window',
   async ({}, _text: string) => {
-    // Verificação já feita em openNewWindowAndVerifyTitle.
+    // Assertion already done in openNewWindowAndVerifyTitle.
   },
 );
 

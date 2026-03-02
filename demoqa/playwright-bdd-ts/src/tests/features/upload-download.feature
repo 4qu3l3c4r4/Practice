@@ -1,14 +1,14 @@
-Feature: Upload e Download no DemoQA
+Feature: Upload and Download in DemoQA
 
   @files @smoke @regression
-  Scenario: Upload de arquivo com sucesso
-    Given que estou na página de upload e download do DemoQA
-    When eu faço upload de um arquivo de exemplo
-    Then devo ver o caminho do arquivo enviado
+  Scenario: Successful file upload
+    Given I am on the DemoQA upload and download page
+    When I upload a sample file
+    Then I should see the uploaded file path
 
   @files @edge
-  Scenario: Download de arquivo gera um evento de download
-    Given que estou na página de upload e download do DemoQA
-    When eu faço download do arquivo
-    Then o download deve ter um nome de arquivo sugerido
+  Scenario: File download triggers a download event
+    Given I am on the DemoQA upload and download page
+    When I download the file
+    Then the download should have a suggested filename
 

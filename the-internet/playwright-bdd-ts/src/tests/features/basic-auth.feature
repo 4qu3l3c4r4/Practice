@@ -1,7 +1,7 @@
-Feature: Autenticação básica no The Internet
+Feature: Basic authentication in The Internet
 
   @auth @smoke @regression
-  Scenario: Acessar /basic_auth com credenciais válidas
-    Given que acesso a página de basic auth com credenciais válidas
-    Then devo ver a mensagem de sucesso de autenticação
+  Scenario: Access /basic_auth with valid credentials
+    Given I access the basic auth page with valid credentials
+    Then I should see the successful authentication message
 

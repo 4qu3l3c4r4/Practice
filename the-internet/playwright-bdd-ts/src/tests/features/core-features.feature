@@ -1,44 +1,44 @@
-Feature: Funcionalidades principais no The Internet
+Feature: Core features in The Internet
 
   @checkboxes @regression
-  Scenario: Alternar estado do primeiro checkbox
-    Given que estou na página de checkboxes do The Internet
-    When eu alterno o primeiro checkbox
-    Then o primeiro checkbox deve estar marcado
+  Scenario: Toggle first checkbox
+    Given I am on The Internet checkboxes page
+    When I toggle the first checkbox
+    Then the first checkbox should be checked
 
   @dropdown @regression
-  Scenario: Selecionar opção no dropdown
-    Given que estou na página de dropdown do The Internet
-    When eu seleciono a opção "Option 2"
-    Then o dropdown deve exibir "Option 2"
+  Scenario: Select option in dropdown
+    Given I am on The Internet dropdown page
+    When I select the option "Option 2"
+    Then the dropdown should display "Option 2"
 
   @dynamic @smoke @regression
-  Scenario: Carregamento dinâmico exibe Hello World
-    Given que estou na página de carregamento dinâmico do The Internet
-    When eu inicio o carregamento
-    Then devo ver o texto "Hello World!"
+  Scenario: Dynamic loading shows Hello World
+    Given I am on The Internet dynamic loading page
+    When I start the loading
+    Then I should see the text "Hello World!"
 
   @dragdrop @regression
-  Scenario: Arrastar coluna A para B
-    Given que estou na página de drag and drop do The Internet
-    When eu arrasto a coluna A para a coluna B
-    Then as colunas devem trocar de posição
+  Scenario: Drag column A to B
+    Given I am on The Internet drag and drop page
+    When I drag column A to column B
+    Then the columns should swap positions
 
   @upload @regression
-  Scenario: Upload de arquivo com sucesso
-    Given que estou na página de upload do The Internet
-    When eu faço upload de um arquivo de exemplo
-    Then o nome do arquivo deve ser exibido como enviado
+  Scenario: Successful file upload
+    Given I am on The Internet upload page
+    When I upload a sample file
+    Then the uploaded file name should be displayed
 
   @editor @regression
-  Scenario: Editar texto no editor WYSIWYG
-    Given que estou na página do editor do The Internet
-    When eu preencho o editor com "Texto de teste"
-    Then o editor deve conter "Texto de teste"
+  Scenario: Edit text in the WYSIWYG editor
+    Given I am on The Internet editor page
+    When I fill the editor with "Test text"
+    Then the editor should contain "Test text"
 
   @hovers @edge
-  Scenario: Exibir legenda ao passar o mouse
-    Given que estou na página de hovers do The Internet
-    When eu passo o mouse sobre a primeira imagem
-    Then devo ver a legenda visível
+  Scenario: Show caption on hover
+    Given I am on The Internet hovers page
+    When I hover over the first image
+    Then I should see the caption visible
 

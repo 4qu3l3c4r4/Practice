@@ -5,27 +5,27 @@ import { test } from '../../fixtures/fixtures';
 
 const { Given, When, Then } = createBdd(test);
 
-Given('que estou na página de upload e download do DemoQA', async ({ uploadDownloadPage }) => {
+Given('I am on the DemoQA upload and download page', async ({ uploadDownloadPage }) => {
   await uploadDownloadPage.open();
 });
 
-When('eu faço upload de um arquivo de exemplo', async ({ uploadDownloadPage }) => {
+When('I upload a sample file', async ({ uploadDownloadPage }) => {
   const filePath = path.resolve(__dirname, '../../fixtures/sample-upload.txt');
   await uploadDownloadPage.uploadFile(filePath);
 });
 
-Then('devo ver o caminho do arquivo enviado', async ({ uploadDownloadPage }) => {
+Then('I should see the uploaded file path', async ({ uploadDownloadPage }) => {
   await uploadDownloadPage.expectUploadedPathContains('sample-upload.txt');
 });
 
-When('eu faço download do arquivo', async ({ uploadDownloadPage, page }) => {
-  // Guardamos o download no contexto do step para validação no próximo Then.
-  // @ts-expect-error - armazenamos em runtime no objeto page para simplificar o World.
+When('I download the file', async ({ uploadDownloadPage, page }) => {
+  // Store the download on the page object so the next step can validate it.
+  // @ts-expect-error - stored dynamically on the page object.
   page.__lastDownload = await uploadDownloadPage.downloadFile();
 });
 
-Then('o download deve ter um nome de arquivo sugerido', async ({ page }) => {
-  // @ts-expect-error - ver comentário acima.
+Then('the download should have a suggested filename', async ({ page }) => {
+  // @ts-expect-error - see comment above.
   const download = page.__lastDownload;
   const filename = download.suggestedFilename();
   expect(filename).toBeTruthy();

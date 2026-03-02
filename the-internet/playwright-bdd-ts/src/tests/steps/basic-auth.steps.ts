@@ -4,13 +4,13 @@ import { test } from '../../fixtures/fixtures';
 const { Given, Then } = createBdd(test);
 
 Given(
-  'que acesso a página de basic auth com credenciais válidas',
+  'I access the basic auth page with valid credentials',
   async ({ basicAuthPage, basicAuthUsername, basicAuthPassword }) => {
     await basicAuthPage.openWithValidCredentials(basicAuthUsername, basicAuthPassword);
   },
 );
 
-Then('devo ver a mensagem de sucesso de autenticação', async ({ basicAuthPage }) => {
+Then('I should see the successful authentication message', async ({ basicAuthPage }) => {
   await basicAuthPage.expectSuccessMessage();
 });
 

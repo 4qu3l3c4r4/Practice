@@ -1,20 +1,20 @@
-Feature: Alerts no DemoQA
+Feature: Alerts in DemoQA
 
   @alerts @smoke @regression
-  Scenario: Aceitar um alert simples
-    Given que estou na página de alerts do DemoQA
-    When eu abro e aceito um alert simples
-    Then a página deve continuar utilizável
+  Scenario: Accept a simple alert
+    Given I am on the DemoQA alerts page
+    When I open and accept a simple alert
+    Then the page should remain usable
 
   @alerts @negative
-  Scenario: Dismiss em confirm deve indicar Cancel
-    Given que estou na página de alerts do DemoQA
-    When eu abro um confirm e clico em cancelar
-    Then devo ver um resultado indicando "Cancel"
+  Scenario: Dismissing confirm should show Cancel
+    Given I am on the DemoQA alerts page
+    When I open a confirm and click cancel
+    Then I should see a result containing "Cancel"
 
   @alerts @edge
-  Scenario: Prompt com texto deve aparecer no resultado
-    Given que estou na página de alerts do DemoQA
-    When eu abro um prompt e informo "Texto QA"
-    Then devo ver um resultado contendo "Texto QA"
+  Scenario: Prompt text should appear in the result
+    Given I am on the DemoQA alerts page
+    When I open a prompt and enter "QA Text"
+    Then I should see a result containing "QA Text"
 

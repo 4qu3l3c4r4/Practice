@@ -14,34 +14,34 @@ After(async function (this: PlaywrightWorld) {
   await this.dispose();
 });
 
-Given('que estou na página de login do Swag Labs', async function (this: PlaywrightWorld) {
+Given('I am on the Swag Labs login page', async function (this: PlaywrightWorld) {
   await loginPage.open();
 });
 
-When('eu faço login com credenciais válidas', async function (this: PlaywrightWorld) {
+When('I log in with valid credentials', async function (this: PlaywrightWorld) {
   await loginPage.login(process.env.UI_USERNAME || 'standard_user', process.env.UI_PASSWORD || 'secret_sauce');
 });
 
-Then('devo ser redirecionado para a página de inventário', async function (this: PlaywrightWorld) {
+Then('I should be redirected to the inventory page', async function (this: PlaywrightWorld) {
   await expect(this.page).toHaveURL(/inventory\.html$/);
   await expect(this.page.locator('#inventory_container')).toBeVisible();
 });
 
-When('eu tento fazer login com senha inválida', async function (this: PlaywrightWorld) {
-  await loginPage.login(process.env.UI_USERNAME || 'standard_user', 'senha_incorreta!');
+When('I try to log in with an invalid password', async function (this: PlaywrightWorld) {
+  await loginPage.login(process.env.UI_USERNAME || 'standard_user', 'invalid_password!');
 });
 
-Then('devo ver uma mensagem de erro de credenciais inválidas', async function () {
+Then('I should see an error message saying the credentials are invalid', async function () {
   const error = await loginPage.getErrorMessage();
   expect(error).toContain('Epic sadface: Username and password do not match any user in this service');
 });
 
-When('eu tento fazer login sem preencher usuário e senha', async function (this: PlaywrightWorld) {
+When('I try to log in without filling username and password', async function (this: PlaywrightWorld) {
   await loginPage.open();
   await this.page.click('#login-button');
 });
 
-Then('devo ver uma mensagem informando que o usuário é obrigatório', async function () {
+Then('I should see an error message saying the username is required', async function () {
   const error = await loginPage.getErrorMessage();
   expect(error).toContain('Epic sadface: Username is required');
 });

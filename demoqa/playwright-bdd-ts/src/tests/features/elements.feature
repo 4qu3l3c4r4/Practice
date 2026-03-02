@@ -1,27 +1,27 @@
-Feature: Elementos básicos no DemoQA
+Feature: Basic elements in DemoQA
 
   @elements @smoke @regression
-  Scenario: Selecionar checkbox "Home" e ver resultado
-    Given que estou na página de checkboxes do DemoQA
-    When eu seleciono o checkbox Home
-    Then devo ver o resultado contendo "home"
+  Scenario: Select Home checkbox and see result
+    Given I am on the DemoQA checkboxes page
+    When I select the Home checkbox
+    Then I should see the result containing "home"
 
   @elements @regression
-  Scenario: Selecionar radio "Yes" e ver mensagem
-    Given que estou na página de radio buttons do DemoQA
-    When eu seleciono a opção Yes
-    Then devo ver o texto "Yes" como resultado
+  Scenario: Select Yes radio and see message
+    Given I am on the DemoQA radio buttons page
+    When I select the Yes option
+    Then I should see the text "Yes" as the result
 
   @elements @edge
-  Scenario: Alternar radio entre Yes e Impressive
-    Given que estou na página de radio buttons do DemoQA
-    When eu seleciono a opção Yes
-    And eu seleciono a opção Impressive
-    Then devo ver o texto "Impressive" como resultado
+  Scenario: Toggle radio between Yes and Impressive
+    Given I am on the DemoQA radio buttons page
+    When I select the Yes option
+    And I select the Impressive option
+    Then I should see the text "Impressive" as the result
 
   @elements @regression
-  Scenario: Selecionar opção no dropdown antigo
-    Given que estou na página de select menu do DemoQA
-    When eu seleciono "Purple" no dropdown antigo
-    Then o dropdown antigo deve estar com "Purple" selecionado
+  Scenario: Select option in the old-style dropdown
+    Given I am on the DemoQA select menu page
+    When I select "Purple" in the old-style dropdown
+    Then the old-style dropdown should have "Purple" selected
 

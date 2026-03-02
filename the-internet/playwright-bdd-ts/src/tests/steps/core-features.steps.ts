@@ -4,104 +4,104 @@ import { test } from '../../fixtures/fixtures';
 
 const { Given, When, Then } = createBdd(test);
 
-Given('que estou na página de checkboxes do The Internet', async ({ checkboxesPage }) => {
+Given('I am on The Internet checkboxes page', async ({ checkboxesPage }) => {
   await checkboxesPage.open();
 });
 
-When('eu alterno o primeiro checkbox', async ({ checkboxesPage }) => {
+When('I toggle the first checkbox', async ({ checkboxesPage }) => {
   await checkboxesPage.toggleFirst();
 });
 
-Then('o primeiro checkbox deve estar marcado', async ({ checkboxesPage }) => {
+Then('the first checkbox should be checked', async ({ checkboxesPage }) => {
   await checkboxesPage.expectFirstChecked(true);
 });
 
-Given('que estou na página de dropdown do The Internet', async ({ dropdownPage }) => {
+Given('I am on The Internet dropdown page', async ({ dropdownPage }) => {
   await dropdownPage.open();
 });
 
-When('eu seleciono a opção {string}', async ({ dropdownPage }, option: string) => {
+When('I select the option {string}', async ({ dropdownPage }, option: string) => {
   const value = option === 'Option 1' ? '1' : '2';
   await dropdownPage.selectOptionByValue(value);
 });
 
-Then('o dropdown deve exibir {string}', async ({ dropdownPage }, text: string) => {
+Then('the dropdown should display {string}', async ({ dropdownPage }, text: string) => {
   await dropdownPage.expectSelectedText(text);
 });
 
 Given(
-  'que estou na página de carregamento dinâmico do The Internet',
+  'I am on The Internet dynamic loading page',
   async ({ dynamicLoadingPage }) => {
     await dynamicLoadingPage.openExample1();
   },
 );
 
-When('eu inicio o carregamento', async ({ dynamicLoadingPage }) => {
+When('I start the loading', async ({ dynamicLoadingPage }) => {
   await dynamicLoadingPage.startAndWaitFinish();
 });
 
-Then('devo ver o texto {string}', async ({}, _text: string) => {
-  // Já validado em startAndWaitFinish; step fica sem lógica adicional.
+Then('I should see the text {string}', async ({}, _text: string) => {
+  // Already validated inside startAndWaitFinish; no extra logic needed here.
 });
 
-Given('que estou na página de drag and drop do The Internet', async ({ dragAndDropPage }) => {
+Given('I am on The Internet drag and drop page', async ({ dragAndDropPage }) => {
   await dragAndDropPage.open();
 });
 
 When(
-  'eu arrasto a coluna A para a coluna B',
+  'I drag column A to column B',
   async ({ dragAndDropPage }) => {
     await dragAndDropPage.dragAtoB();
   },
 );
 
-Then('as colunas devem trocar de posição', async ({ dragAndDropPage }) => {
+Then('the columns should swap positions', async ({ dragAndDropPage }) => {
   await dragAndDropPage.expectSwapped();
 });
 
-Given('que estou na página de upload do The Internet', async ({ uploadPage }) => {
+Given('I am on The Internet upload page', async ({ uploadPage }) => {
   await uploadPage.open();
 });
 
-When('eu faço upload de um arquivo de exemplo', async ({ uploadPage }) => {
+When('I upload a sample file', async ({ uploadPage }) => {
   const filePath = path.resolve(__dirname, '../../fixtures/sample-upload.txt');
   await uploadPage.uploadFile(filePath);
 });
 
 Then(
-  'o nome do arquivo deve ser exibido como enviado',
+  'the uploaded file name should be displayed',
   async ({ uploadPage }) => {
     await uploadPage.expectUploadedFileName('sample-upload.txt');
   },
 );
 
-Given('que estou na página do editor do The Internet', async ({ editorPage }) => {
+Given('I am on The Internet editor page', async ({ editorPage }) => {
   await editorPage.open();
 });
 
 When(
-  'eu preencho o editor com {string}',
+  'I fill the editor with {string}',
   async ({ editorPage }, text: string) => {
     await editorPage.setEditorContent(text);
   },
 );
 
-Then('o editor deve conter {string}', async ({ editorPage }, text: string) => {
+Then('the editor should contain {string}', async ({ editorPage }, text: string) => {
   await editorPage.expectEditorContent(text);
 });
 
-Given('que estou na página de hovers do The Internet', async ({ hoversPage }) => {
+Given('I am on The Internet hovers page', async ({ hoversPage }) => {
   await hoversPage.open();
 });
 
 When(
-  'eu passo o mouse sobre a primeira imagem',
+  'I hover over the first image',
   async ({ hoversPage }) => {
     await hoversPage.hoverFirstFigure();
   },
 );
 
-Then('devo ver a legenda visível', async ({ hoversPage }) => {
+Then('I should see the caption visible', async ({ hoversPage }) => {
   await hoversPage.expectCaptionVisible();
 });
 

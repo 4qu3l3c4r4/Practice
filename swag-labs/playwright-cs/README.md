@@ -1,8 +1,8 @@
 # Swag Labs — Playwright C# (.NET)
 
-Projeto de automação E2E do **Swag Labs (SauceDemo)** usando **Playwright para .NET + NUnit**.
+End-to-end automation project for **Swag Labs (SauceDemo)** using **Playwright for .NET + NUnit**.
 
-## Estrutura
+## Structure
 
 ```
 swag-labs/playwright-cs/
@@ -17,58 +17,58 @@ swag-labs/playwright-cs/
     └── AuthTests.cs
 ```
 
-## Pré-requisitos
+## Prerequisites
 
 - .NET 8 SDK
-- PowerShell (para instalar os browsers do Playwright)
+- PowerShell (to install Playwright browsers)
 
 ## Setup
 
 ```bash
 cd swag-labs/playwright-cs
-cp .env.example .env            # ajuste credenciais se necessário
+cp .env.example .env            # adjust credentials if needed
 dotnet restore
 dotnet build
 pwsh bin/Debug/net8.0/playwright.ps1 install chromium
 ```
 
-## Execução
+## Running tests
 
 ```bash
-dotnet test                               # todos os testes
-dotnet test --filter "TestCategory=Smoke" # apenas smoke (login feliz)
+dotnet test                               # all tests
+dotnet test --filter "TestCategory=Smoke" # only smoke (happy path login)
 dotnet test --filter "TestCategory=Negative"
 dotnet test --filter "TestCategory=Edge"
 ```
 
-## Cenários implementados
+## Implemented scenarios
 
-Todos os testes estão em `Tests/AuthTests.cs` e utilizam o Page Object `LoginPage`:
+All tests live in `Tests/AuthTests.cs` and use the `LoginPage` Page Object:
 
-- **Login_ComCredenciaisValidas_DeveRedirecionarParaInventory**  
-  - Categoria: `Auth`, `Smoke`  
-  - Usa `UI_USERNAME`/`UI_PASSWORD` do `.env` (por padrão `standard_user` / `secret_sauce`).  
-  - Valida redirecionamento para `inventory.html` e presença do container de produtos.
+- **Login_WithValidCredentials_ShouldRedirectToInventory**  
+  - Category: `Auth`, `Smoke`  
+  - Uses `UI_USERNAME`/`UI_PASSWORD` from `.env` (defaults to `standard_user` / `secret_sauce`).  
+  - Validates redirect to `inventory.html` and the presence of the products container.
 
-- **Login_ComSenhaInvalida_DeveExibirMensagemErro**  
-  - Categoria: `Auth`, `Negative`  
-  - Usa senha incorreta e valida a mensagem  
+- **Login_WithInvalidPassword_ShouldShowErrorMessage**  
+  - Category: `Auth`, `Negative`  
+  - Uses an invalid password and validates the message  
     `"Epic sadface: Username and password do not match any user in this service"`.
 
-- **Login_CamposVazios_DeveInformarUsuarioObrigatorio**  
-  - Categorias: `Auth`, `Negative`, `Edge`  
-  - Clica em login sem preencher nada e valida mensagem  
+- **Login_WithEmptyFields_ShouldRequireUsername**  
+  - Categories: `Auth`, `Negative`, `Edge`  
+  - Clicks login with empty fields and validates the message  
     `"Epic sadface: Username is required"`.
 
-## Dados de teste
+## Test data
 
-As credenciais e flags de execução ficam no `.env`:
+Credentials and execution flags are configured via `.env`:
 
 - `BASE_URL` — `https://www.saucedemo.com`
-- `UI_USERNAME` — usuário padrão (`standard_user`)
-- `UI_PASSWORD` — senha (`secret_sauce`)
-- `HEADLESS_MODE` — `true` ou `false`
-- `VIDEO_RECORDING` — habilita ou não gravação de vídeo
+- `UI_USERNAME` — default user (`standard_user`)
+- `UI_PASSWORD` — password (`secret_sauce`)
+- `HEADLESS_MODE` — `true` or `false`
+- `VIDEO_RECORDING` — enables or disables video recording
 
-Nenhum dado sensível fica hardcoded no código — sempre via `Config`.
+No sensitive data is hardcoded in the code — everything goes through `Config`.
 

@@ -1,20 +1,20 @@
-Feature: Autenticação no Swag Labs (Cucumber)
+Feature: Authentication in Swag Labs (Cucumber)
 
   @login @smoke @regression
-  Scenario: Login bem-sucedido com credenciais válidas
-    Given que estou na página de login do Swag Labs
-    When eu faço login com credenciais válidas
-    Then devo ser redirecionado para a página de inventário
+  Scenario: Successful login with valid credentials
+    Given I am on the Swag Labs login page
+    When I log in with valid credentials
+    Then I should be redirected to the inventory page
 
   @login @negative @regression
-  Scenario: Login falha com senha inválida
-    Given que estou na página de login do Swag Labs
-    When eu tento fazer login com senha inválida
-    Then devo ver uma mensagem de erro de credenciais inválidas
+  Scenario: Login fails with invalid password
+    Given I am on the Swag Labs login page
+    When I try to log in with an invalid password
+    Then I should see an error message saying the credentials are invalid
 
   @login @negative @edge
-  Scenario: Login falha com campos vazios
-    Given que estou na página de login do Swag Labs
-    When eu tento fazer login sem preencher usuário e senha
-    Then devo ver uma mensagem informando que o usuário é obrigatório
+  Scenario: Login fails with empty fields
+    Given I am on the Swag Labs login page
+    When I try to log in without filling username and password
+    Then I should see an error message saying the username is required
 

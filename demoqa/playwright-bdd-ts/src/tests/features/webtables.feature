@@ -1,16 +1,16 @@
-Feature: Web Tables no DemoQA
+Feature: Web Tables in DemoQA
 
   @tables @smoke @regression
-  Scenario: Adicionar e remover um registro
-    Given que estou na página de web tables do DemoQA
-    When eu adiciono um novo registro válido
-    Then a tabela deve conter o email do novo registro
-    When eu removo o registro pelo email
-    Then o email não deve mais aparecer na tabela
+  Scenario: Add and remove a record
+    Given I am on the DemoQA web tables page
+    When I add a new valid record
+    Then the table should contain the email of the new record
+    When I remove the record by email
+    Then the email should no longer appear in the table
 
   @tables @negative
-  Scenario: Tentar cadastrar registro sem email
-    Given que estou na página de web tables do DemoQA
-    When eu tento adicionar um registro sem email
-    Then o campo de email deve ser marcado como inválido
+  Scenario: Try to create a record without email
+    Given I am on the DemoQA web tables page
+    When I try to add a record without email
+    Then the email field should be marked as invalid
 

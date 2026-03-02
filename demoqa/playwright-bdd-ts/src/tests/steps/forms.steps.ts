@@ -6,14 +6,14 @@ import { testData } from '../../fixtures/testData';
 const { Given, When, Then, And } = createBdd(test);
 
 Given(
-  'que estou na página de formulário de prática do DemoQA',
+  'I am on the DemoQA practice form page',
   async ({ practiceFormPage }) => {
     await practiceFormPage.open();
   },
 );
 
 When(
-  'eu preencho todos os campos obrigatórios com dados válidos',
+  'I fill all required fields with valid data',
   async ({ practiceFormPage }) => {
     await practiceFormPage.fillRequiredFields(
       testData.practiceForm.valid.firstName,
@@ -24,26 +24,26 @@ When(
   },
 );
 
-And('eu submeto o formulário', async ({ practiceFormPage }) => {
+And('I submit the form', async ({ practiceFormPage }) => {
   await practiceFormPage.submit();
 });
 
 Then(
-  'devo ver um modal de confirmação com os dados enviados',
+  'I should see a confirmation modal with the submitted data',
   async ({ practiceFormPage }) => {
     await practiceFormPage.expectConfirmationVisible();
   },
 );
 
 When(
-  'eu tento submeter o formulário sem preencher os campos obrigatórios',
+  'I try to submit the form without filling the required fields',
   async ({ page }) => {
     await page.click('#submit');
   },
 );
 
 Then(
-  'os campos obrigatórios devem ser marcados como inválidos',
+  'the required fields should be marked as invalid',
   async ({ page }) => {
     const firstName = page.locator('#firstName');
     await expect(firstName).toHaveClass(/is-invalid/);

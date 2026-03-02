@@ -5,42 +5,42 @@ import { testData } from '../../fixtures/testData';
 
 const { Given, When, Then } = createBdd(test);
 
-Given('que estou na página de web tables do DemoQA', async ({ webTablesPage }) => {
+Given('I am on the DemoQA web tables page', async ({ webTablesPage }) => {
   await webTablesPage.open();
 });
 
-When('eu adiciono um novo registro válido', async ({ webTablesPage }) => {
+When('I add a new valid record', async ({ webTablesPage }) => {
   const record = testData.webTables.valid;
   await webTablesPage.clickAdd();
   await webTablesPage.fillRecord(record);
   await webTablesPage.submit();
 });
 
-Then('a tabela deve conter o email do novo registro', async ({ webTablesPage }) => {
+Then('the table should contain the email of the new record', async ({ webTablesPage }) => {
   await webTablesPage.expectTableContains(testData.webTables.valid.email);
 });
 
-When('eu removo o registro pelo email', async ({ webTablesPage }) => {
+When('I remove the record by email', async ({ webTablesPage }) => {
   await webTablesPage.deleteRowByEmail(testData.webTables.valid.email);
 });
 
-Then('o email não deve mais aparecer na tabela', async ({ webTablesPage }) => {
+Then('the email should no longer appear in the table', async ({ webTablesPage }) => {
   await webTablesPage.expectEmailNotPresent(testData.webTables.valid.email);
 });
 
-When('eu tento adicionar um registro sem email', async ({ webTablesPage, page }) => {
+When('I try to add a record without email', async ({ webTablesPage, page }) => {
   const record = { ...testData.webTables.valid, email: '' };
   await webTablesPage.clickAdd();
   await webTablesPage.fillRecord(record);
   await webTablesPage.submit();
 
-  // Guardamos o locator para validar no Then.
-  // @ts-expect-error - armazenamento em runtime.
+  // Store the locator to validate it in the Then step.
+  // @ts-expect-error - stored dynamically for test purposes.
   page.__invalidEmailLocator = page.locator('#userEmail');
 });
 
-Then('o campo de email deve ser marcado como inválido', async ({ page }) => {
-  // @ts-expect-error - ver comentário acima.
+Then('the email field should be marked as invalid', async ({ page }) => {
+  // @ts-expect-error - see comment above.
   const emailInput = page.__invalidEmailLocator;
   await expect(emailInput).toHaveClass(/is-invalid/);
 });

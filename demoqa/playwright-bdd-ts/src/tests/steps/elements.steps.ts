@@ -3,43 +3,43 @@ import { test } from '../../fixtures/fixtures';
 
 const { Given, When, Then, And } = createBdd(test);
 
-Given('que estou na página de checkboxes do DemoQA', async ({ checkBoxPage }) => {
+Given('I am on the DemoQA checkboxes page', async ({ checkBoxPage }) => {
   await checkBoxPage.open();
 });
 
-When('eu seleciono o checkbox Home', async ({ checkBoxPage }) => {
+When('I select the Home checkbox', async ({ checkBoxPage }) => {
   await checkBoxPage.selectHome();
 });
 
-Then('devo ver o resultado contendo {string}', async ({ checkBoxPage }, text: string) => {
+Then('I should see the result containing {string}', async ({ checkBoxPage }, text: string) => {
   await checkBoxPage.expectResultContains(text);
 });
 
-Given('que estou na página de radio buttons do DemoQA', async ({ radioButtonPage }) => {
+Given('I am on the DemoQA radio buttons page', async ({ radioButtonPage }) => {
   await radioButtonPage.open();
 });
 
-When('eu seleciono a opção Yes', async ({ radioButtonPage }) => {
+When('I select the Yes option', async ({ radioButtonPage }) => {
   await radioButtonPage.chooseYes();
 });
 
-And('eu seleciono a opção Impressive', async ({ radioButtonPage }) => {
+And('I select the Impressive option', async ({ radioButtonPage }) => {
   await radioButtonPage.chooseImpressive();
 });
 
-Then('devo ver o texto {string} como resultado', async ({ radioButtonPage }, value: string) => {
+Then('I should see the text {string} as the result', async ({ radioButtonPage }, value: string) => {
   await radioButtonPage.expectOutputIs(value);
 });
 
-Given('que estou na página de select menu do DemoQA', async ({ selectMenuPage }) => {
+Given('I am on the DemoQA select menu page', async ({ selectMenuPage }) => {
   await selectMenuPage.open();
 });
 
-When('eu seleciono {string} no dropdown antigo', async ({ selectMenuPage }, label: string) => {
+When('I select {string} in the old-style dropdown', async ({ selectMenuPage }, label: string) => {
   await selectMenuPage.selectOldStyleOptionByLabel(label);
 });
 
-Then('o dropdown antigo deve estar com {string} selecionado', async ({ selectMenuPage }, label: string) => {
+Then('the old-style dropdown should have {string} selected', async ({ selectMenuPage }, label: string) => {
   await selectMenuPage.expectOldStyleValue(label);
 });
 

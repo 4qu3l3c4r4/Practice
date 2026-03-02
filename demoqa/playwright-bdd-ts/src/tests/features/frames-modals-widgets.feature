@@ -1,33 +1,33 @@
-Feature: Frames, Modais, Tooltips, DatePicker e Slider no DemoQA
+Feature: Frames, Modals, Tooltips, DatePicker and Slider in DemoQA
 
   @frames @smoke @regression
-  Scenario: Ler texto dentro do frame
-    Given que estou na página de frames do DemoQA
-    Then devo ver o texto "This is a sample page" dentro do frame
+  Scenario: Read text inside the frame
+    Given I am on the DemoQA frames page
+    Then I should see the text "This is a sample page" inside the frame
 
   @modals @regression
-  Scenario: Abrir e fechar um modal pequeno
-    Given que estou na página de modal dialogs do DemoQA
-    When eu abro o modal pequeno
-    Then devo ver o modal pequeno visível
-    When eu fecho o modal pequeno
-    Then o modal pequeno não deve estar visível
+  Scenario: Open and close a small modal
+    Given I am on the DemoQA modal dialogs page
+    When I open the small modal
+    Then I should see the small modal visible
+    When I close the small modal
+    Then the small modal should not be visible
 
   @tooltips @edge
-  Scenario: Tooltip aparece ao passar o mouse
-    Given que estou na página de tool tips do DemoQA
-    When eu passo o mouse sobre o botão com tooltip
-    Then devo ver o tooltip visível
+  Scenario: Tooltip appears when hovering
+    Given I am on the DemoQA tool tips page
+    When I hover over the tooltip button
+    Then I should see the tooltip visible
 
   @datepicker @regression
-  Scenario: Preencher date picker via input
-    Given que estou na página de date picker do DemoQA
-    When eu preencho a data com "03/02/2026"
-    Then o campo de data deve conter "03/02/2026"
+  Scenario: Fill date picker via input
+    Given I am on the DemoQA date picker page
+    When I fill the date with "03/02/2026"
+    Then the date field should contain "03/02/2026"
 
   @slider @regression
-  Scenario: Ajustar slider para um valor específico
-    Given que estou na página de slider do DemoQA
-    When eu ajusto o slider para 50
-    Then o valor do slider deve ser 50
+  Scenario: Adjust slider to a specific value
+    Given I am on the DemoQA slider page
+    When I set the slider to 50
+    Then the slider value should be 50
 

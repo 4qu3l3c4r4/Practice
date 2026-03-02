@@ -3,8 +3,8 @@ using Pages;
 
 namespace Tests;
 
-// Testes de autenticação do Swag Labs com Playwright C#.
-// Inclui cenários positivos, negativos e de borda.
+// Swag Labs authentication tests with Playwright C#.
+// Includes positive, negative and edge-case scenarios.
 [TestFixture]
 [Category("Auth")]
 [Retry(2)]
@@ -20,9 +20,9 @@ public class AuthTests : BaseTest
 
     [Test]
     [Category("Smoke")]
-    public async Task Login_ComCredenciaisValidas_DeveRedirecionarParaInventory()
+    public async Task Login_WithValidCredentials_ShouldRedirectToInventory()
     {
-        // Cenário feliz: login com usuário padrão.
+        // Happy path: login with default user.
         await _loginPage.OpenAsync();
         await _loginPage.LoginAsync(Config.Username, Config.Password);
 
@@ -32,9 +32,9 @@ public class AuthTests : BaseTest
 
     [Test]
     [Category("Negative")]
-    public async Task Login_ComSenhaInvalida_DeveExibirMensagemErro()
+    public async Task Login_WithInvalidPassword_ShouldShowErrorMessage()
     {
-        // Cenário negativo: senha incorreta.
+        // Negative scenario: invalid password.
         await _loginPage.OpenAsync();
         await _loginPage.LoginAsync(Config.Username, "senha_incorreta!");
 
@@ -47,9 +47,9 @@ public class AuthTests : BaseTest
     [Test]
     [Category("Edge")]
     [Category("Negative")]
-    public async Task Login_CamposVazios_DeveInformarUsuarioObrigatorio()
+    public async Task Login_WithEmptyFields_ShouldRequireUsername()
     {
-        // Cenário de borda: clique em login sem preencher nada.
+        // Edge case: click login without filling any field.
         await _loginPage.OpenAsync();
         await Page.Locator("#login-button").ClickAsync();
 

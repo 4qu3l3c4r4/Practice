@@ -4,67 +4,67 @@ import { test } from '../../fixtures/fixtures';
 
 const { Given, When, Then } = createBdd(test);
 
-Given('que estou na página de frames do DemoQA', async ({ framesPage }) => {
+Given('I am on the DemoQA frames page', async ({ framesPage }) => {
   await framesPage.open();
 });
 
-Then('devo ver o texto {string} dentro do frame', async ({ framesPage }, text: string) => {
+Then('I should see the text {string} inside the frame', async ({ framesPage }, text: string) => {
   await framesPage.expectFrameHeading(text);
 });
 
-Given('que estou na página de modal dialogs do DemoQA', async ({ modalDialogsPage }) => {
+Given('I am on the DemoQA modal dialogs page', async ({ modalDialogsPage }) => {
   await modalDialogsPage.open();
 });
 
-When('eu abro o modal pequeno', async ({ modalDialogsPage }) => {
+When('I open the small modal', async ({ modalDialogsPage }) => {
   await modalDialogsPage.openSmallModal();
 });
 
-Then('devo ver o modal pequeno visível', async ({ modalDialogsPage }) => {
+Then('I should see the small modal visible', async ({ modalDialogsPage }) => {
   await modalDialogsPage.expectSmallModalVisible();
 });
 
-When('eu fecho o modal pequeno', async ({ modalDialogsPage }) => {
+When('I close the small modal', async ({ modalDialogsPage }) => {
   await modalDialogsPage.closeSmallModal();
 });
 
-Then('o modal pequeno não deve estar visível', async ({ page }) => {
+Then('the small modal should not be visible', async ({ page }) => {
   await expect(page.locator('#example-modal-sizes-title-sm')).toBeHidden();
 });
 
-Given('que estou na página de tool tips do DemoQA', async ({ toolTipsPage }) => {
+Given('I am on the DemoQA tool tips page', async ({ toolTipsPage }) => {
   await toolTipsPage.open();
 });
 
-When('eu passo o mouse sobre o botão com tooltip', async ({ toolTipsPage }) => {
+When('I hover over the tooltip button', async ({ toolTipsPage }) => {
   await toolTipsPage.hoverButton();
 });
 
-Then('devo ver o tooltip visível', async ({ toolTipsPage }) => {
+Then('I should see the tooltip visible', async ({ toolTipsPage }) => {
   await toolTipsPage.expectTooltipVisible();
 });
 
-Given('que estou na página de date picker do DemoQA', async ({ datePickerPage }) => {
+Given('I am on the DemoQA date picker page', async ({ datePickerPage }) => {
   await datePickerPage.open();
 });
 
-When('eu preencho a data com {string}', async ({ datePickerPage }, value: string) => {
+When('I fill the date with {string}', async ({ datePickerPage }, value: string) => {
   await datePickerPage.setDate(value);
 });
 
-Then('o campo de data deve conter {string}', async ({ datePickerPage }, value: string) => {
+Then('the date field should contain {string}', async ({ datePickerPage }, value: string) => {
   await datePickerPage.expectDateValue(value);
 });
 
-Given('que estou na página de slider do DemoQA', async ({ sliderPage }) => {
+Given('I am on the DemoQA slider page', async ({ sliderPage }) => {
   await sliderPage.open();
 });
 
-When('eu ajusto o slider para {int}', async ({ sliderPage }, value: number) => {
+When('I set the slider to {int}', async ({ sliderPage }, value: number) => {
   await sliderPage.setSliderValueWithArrows(value);
 });
 
-Then('o valor do slider deve ser {int}', async ({ sliderPage }, value: number) => {
+Then('the slider value should be {int}', async ({ sliderPage }, value: number) => {
   await sliderPage.expectSliderValue(value);
 });
 
